@@ -19,20 +19,29 @@ namespace HIMS.API.Controllers.Transaction
              public readonly I_Shademaster _Shademaster;
               public readonly I_MillMaster _MillMaster;
         public readonly I_WeaveItemmaster _WeaveItemmaster;
+        public readonly I_INVLoommaster _INVLoommaster;
+        public readonly I_INVQualitymaster _INVQualitymaster;
+        public readonly I_INVLocationmaster _INVLocationmaster;
+        public readonly I_INVAddlessmaster _INVAddlessmaster;
 
 
-            public WeaverController(I_YarnMaster yarnMaster,I_Shademaster shademaster,I_MillMaster millMaster,I_WeaveItemmaster weaveItemmaster)
+        public WeaverController(I_YarnMaster yarnMaster,I_Shademaster shademaster,I_MillMaster millMaster,I_WeaveItemmaster weaveItemmaster,
+               I_INVAddlessmaster iNVAddlessmaster, I_INVLocationmaster iNVLocationmaster, I_INVLoommaster iNVLoommaster, I_INVQualitymaster iNVQualitymaster)
             {
                 this._YarnMaster = yarnMaster;
                 this._Shademaster = shademaster;
                   this._MillMaster = millMaster;
                   this._WeaveItemmaster = weaveItemmaster;
+            this._INVLocationmaster = iNVLocationmaster;
+            this._INVAddlessmaster = iNVAddlessmaster;
+            this._INVLoommaster = iNVLoommaster;
+            this._INVQualitymaster = iNVQualitymaster;
 
-            }
+        }
 
-            //New YarnInsert
+        //New YarnInsert
 
-            [HttpPost("NewYarnInsert")]
+        [HttpPost("NewYarnInsert")]
             public IActionResult NewAdmissionSave(Yarnmasterparam Yarnmasterparam)
             {
                 var yid = _YarnMaster.Insert(Yarnmasterparam);
@@ -99,6 +108,80 @@ namespace HIMS.API.Controllers.Transaction
         public IActionResult ItemUpdate(ItemMasterparam ItemMasterparam)
         {
             var ItemID = _WeaveItemmaster.Update(ItemMasterparam);
+            return Ok(ItemID);
+        }
+        //New INVQuality
+
+        [HttpPost("NewQualityInsert")]
+        public IActionResult NewQualityInsert(INVQualitymasterparam INVQualitymasterparam)
+        {
+            var ID = _INVQualitymaster.Insert(INVQualitymasterparam);
+            return Ok(ID);
+        }
+
+        //New INVQuality
+
+        [HttpPost("NewQualityUpdate")]
+        public IActionResult NewQualityUpdate(INVQualitymasterparam INVQualitymasterparam)
+        {
+            var ID = _INVQualitymaster.Update(INVQualitymasterparam);
+            return Ok(ID);
+        }
+
+
+        //New Location
+
+        [HttpPost("NewLocationInsert")]
+        public IActionResult NewLocationInsert(INVLocationmasterparam INVLocationmasterparam)
+        {
+            var ID = _INVLocationmaster.Insert(INVLocationmasterparam);
+            return Ok(ID);
+        }
+
+        //New Location
+
+        [HttpPost("NewLocationUpdate")]
+        public IActionResult NewLocationUpdate(INVLocationmasterparam INVLocationmasterparam)
+        {
+            var ItemID = _INVLocationmaster.Update(INVLocationmasterparam);
+            return Ok(ItemID);
+        }
+
+
+        //New Loom
+
+        [HttpPost("NewLoomInsert")]
+        public IActionResult NewLoomInsert(INVLoommasterparam INVLoommasterparam)
+        {
+            var ID = _INVLoommaster.Insert(INVLoommasterparam);
+            return Ok(ID);
+        }
+
+        //New Location
+
+        [HttpPost("NewLoomUpdate")]
+        public IActionResult NewLoomUpdate(INVLoommasterparam INVLoommasterparam)
+        {
+            var ItemID = _INVLoommaster.Update(INVLoommasterparam);
+            return Ok(ItemID);
+        }
+
+
+        //New Addless
+
+        [HttpPost("NewAddlessInsert")]
+        public IActionResult NewAddlessInsert(INVAddlessmasterparam INVAddlessmasterparam)
+        {
+            var ID = _INVAddlessmaster.Insert(INVAddlessmasterparam);
+            return Ok(ID);
+        }
+
+        //New Location
+
+        [HttpPost("NewAddlessUpdate")]
+        public IActionResult NewLocationUpdate(INVAddlessmasterparam INVAddlessmasterparam)
+        {
+            var ItemID = _INVAddlessmaster.Update(INVAddlessmasterparam);
             return Ok(ItemID);
         }
 
