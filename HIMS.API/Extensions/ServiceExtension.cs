@@ -271,6 +271,11 @@ namespace HIMS.API.Extensions
             services.AddTransient<I_INVLocationmaster, R_INVLocationmaster>();
             services.AddTransient<I_INVLoommaster, R_INVLoommaster>();
 
+            services.AddTransient<I_INVBeamMaster, R_INVBeamMaster>();
+            services.AddTransient<I_INVDefectMaster, R_INVDefectMaster>();
+            services.AddTransient<I_INVTransportMaster, R_INVTransportMaster>();
+
+
             /*   services.AddTransient<I_BookMasterHome, I_BookMasterHome>();
                services.AddTransient<I_BankMasterHome, I_BankMasterHome>();
                services.AddTransient<I_ProductTypeMasterHome, R_ProductTypeMasterHome>();

@@ -23,19 +23,26 @@ namespace HIMS.API.Controllers.Transaction
         public readonly I_INVQualitymaster _INVQualitymaster;
         public readonly I_INVLocationmaster _INVLocationmaster;
         public readonly I_INVAddlessmaster _INVAddlessmaster;
+        public readonly I_INVTransportMaster _INVTransportMaster;
+        public readonly I_INVDefectMaster _INVDefectMaster;
+        public readonly I_INVBeamMaster _INVBeamMaster;
 
 
         public WeaverController(I_YarnMaster yarnMaster,I_Shademaster shademaster,I_MillMaster millMaster,I_WeaveItemmaster weaveItemmaster,
-               I_INVAddlessmaster iNVAddlessmaster, I_INVLocationmaster iNVLocationmaster, I_INVLoommaster iNVLoommaster, I_INVQualitymaster iNVQualitymaster)
+               I_INVAddlessmaster iNVAddlessmaster, I_INVLocationmaster iNVLocationmaster, I_INVLoommaster iNVLoommaster, I_INVQualitymaster iNVQualitymaster,
+               I_INVBeamMaster beamMaster, I_INVDefectMaster defectMaster, I_INVTransportMaster transportMaster)
             {
                 this._YarnMaster = yarnMaster;
                 this._Shademaster = shademaster;
-                  this._MillMaster = millMaster;
-                  this._WeaveItemmaster = weaveItemmaster;
-            this._INVLocationmaster = iNVLocationmaster;
-            this._INVAddlessmaster = iNVAddlessmaster;
-            this._INVLoommaster = iNVLoommaster;
-            this._INVQualitymaster = iNVQualitymaster;
+                this._MillMaster = millMaster;
+                this._WeaveItemmaster = weaveItemmaster;
+                this._INVLocationmaster = iNVLocationmaster;
+                this._INVAddlessmaster = iNVAddlessmaster;
+                this._INVLoommaster = iNVLoommaster;
+                this._INVQualitymaster = iNVQualitymaster;
+                this._INVDefectMaster = defectMaster;
+                this._INVTransportMaster = transportMaster;
+                this._INVBeamMaster = beamMaster;
 
         }
 
@@ -182,6 +189,61 @@ namespace HIMS.API.Controllers.Transaction
         public IActionResult NewLocationUpdate(INVAddlessmasterparam INVAddlessmasterparam)
         {
             var ItemID = _INVAddlessmaster.Update(INVAddlessmasterparam);
+            return Ok(ItemID);
+        }
+
+        //New Beam
+
+        [HttpPost("NewBeamInsert")]
+        public IActionResult NewBeamInsert(INVBeamMasterparam INVBeamMasterparam)
+        {
+            var ID = _INVBeamMaster.Insert(INVBeamMasterparam);
+            return Ok(ID);
+        }
+
+        //Update Beam
+
+        [HttpPost("BeamUpdate")]
+        public IActionResult BeamUpdate(INVBeamMasterparam INVBeamMasterparam)
+        {
+            var ItemID = _INVBeamMaster.Update(INVBeamMasterparam);
+            return Ok(ItemID);
+        }
+
+        //New Defect
+
+        [HttpPost("NewDefectInsert")]
+        public IActionResult NewDefectInsert(INVDefectMasterparam INVDefectMasterparam)
+        {
+            var ID = _INVDefectMaster.Insert(INVDefectMasterparam);
+            return Ok(ID);
+        }
+
+        //Update Defect
+
+        [HttpPost("DefectUpdate")]
+        public IActionResult DefectUpdate(INVDefectMasterparam INVDefectMasterparam)
+        {
+            var ItemID = _INVDefectMaster.Update(INVDefectMasterparam);
+            return Ok(ItemID);
+        }
+
+
+        //New Transport
+
+        [HttpPost("NewTransportInsert")]
+        public IActionResult NewTransportInsert(INVTransportMasterparam INVTransportMasterparam)
+        {
+            var ID = _INVTransportMaster.Insert(INVTransportMasterparam);
+            return Ok(ID);
+        }
+
+        //Update Transport
+
+        [HttpPost("TransportUpdate")]
+        public IActionResult TransportUpdate(INVTransportMasterparam INVTransportMasterparam)
+        {
+            var ItemID = _INVTransportMaster.Update(INVTransportMasterparam);
             return Ok(ItemID);
         }
 
