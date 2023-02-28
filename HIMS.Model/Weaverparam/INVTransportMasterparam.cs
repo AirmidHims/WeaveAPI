@@ -19,14 +19,14 @@ namespace HIMS.Model.Weaverparam
         public String TransportName { get; set; }
 
         public String TransportCode { get; set; }
-        public int TagaRate { get; set; }
+        public float TagaRate { get; set; }
 
-        public int BagRate { get; set; }
-        public int LoadedBeamRate { get; set; }
-        public int EmptyBeamRate { get; set; }
-        public int OtherRate { get; set; }
-        public int CutePeiceRate { get; set; }
-        public int RollRate { get; set; }
+        public float BagRate { get; set; }
+        public float LoadedBeamRate { get; set; }
+        public float EmptyBeamRate { get; set; }
+        public float OtherRate { get; set; }
+        public float CutePeiceRate { get; set; }
+        public float RollRate { get; set; }
         public String CreatedBy { get; set; }
 
         public String UpdatedBy { get; set; }

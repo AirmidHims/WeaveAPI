@@ -22,13 +22,13 @@ namespace HIMS.Data.Weaver
             var outputId1 = new SqlParameter
             {
                 SqlDbType = SqlDbType.BigInt,
-                ParameterName = "@BeamID",
+                ParameterName = "@BeamId",
                 Value = 0,
                 Direction = ParameterDirection.Output
             };
 
             var disc = INVBeamMasterparam.InsertBeam.ToDictionary();
-            disc.Remove("BeamID");
+            disc.Remove("BeamId");
             var id = ExecNonQueryProcWithOutSaveChanges("Insert_BeamMaster", disc, outputId1);
 
             _unitofWork.SaveChanges();

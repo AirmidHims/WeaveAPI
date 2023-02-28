@@ -26,11 +26,12 @@ namespace HIMS.API.Controllers.Transaction
         public readonly I_INVTransportMaster _INVTransportMaster;
         public readonly I_INVDefectMaster _INVDefectMaster;
         public readonly I_INVBeamMaster _INVBeamMaster;
-
+        public readonly I_LoomTypemaster _LoomTypemaster;
+        public readonly I_RollTypemaster _RollTypemaster;
 
         public WeaverController(I_YarnMaster yarnMaster,I_Shademaster shademaster,I_MillMaster millMaster,I_WeaveItemmaster weaveItemmaster,
                I_INVAddlessmaster iNVAddlessmaster, I_INVLocationmaster iNVLocationmaster, I_INVLoommaster iNVLoommaster, I_INVQualitymaster iNVQualitymaster,
-               I_INVBeamMaster beamMaster, I_INVDefectMaster defectMaster, I_INVTransportMaster transportMaster)
+               I_INVBeamMaster beamMaster, I_INVDefectMaster defectMaster, I_INVTransportMaster transportMaster,I_RollTypemaster rollTypemaster,I_LoomTypemaster loomTypemaster)
             {
                 this._YarnMaster = yarnMaster;
                 this._Shademaster = shademaster;
@@ -43,7 +44,8 @@ namespace HIMS.API.Controllers.Transaction
                 this._INVDefectMaster = defectMaster;
                 this._INVTransportMaster = transportMaster;
                 this._INVBeamMaster = beamMaster;
-
+                this._RollTypemaster = rollTypemaster;
+            this._LoomTypemaster = loomTypemaster;
         }
 
         //New YarnInsert
@@ -247,5 +249,40 @@ namespace HIMS.API.Controllers.Transaction
             return Ok(ItemID);
         }
 
+        //New LoomType
+
+        [HttpPost("NewLoomTypeInsert")]
+        public IActionResult NewLoomTypeInsert(LoomTypemasterparam LoomTypemasterparam)
+        {
+            var ID = _LoomTypemaster.Insert(LoomTypemasterparam);
+            return Ok(ID);
+        }
+
+        //Update Transport
+
+        [HttpPost("LoomTypeUpdate")]
+        public IActionResult LoomTypeUpdate(LoomTypemasterparam LoomTypemasterparam)
+        {
+            var ItemID = _LoomTypemaster.Update(LoomTypemasterparam);
+            return Ok(ItemID);
+        }
+
+        //New RollType
+
+        [HttpPost("NewRollTypeInsert")]
+        public IActionResult NewRollTypeInsert(Rolltypemasterparam Rolltypemasterparam)
+        {
+            var ID = _RollTypemaster.Insert(Rolltypemasterparam);
+            return Ok(ID);
+        }
+
+        //Update Transport
+
+        [HttpPost("RollTypeUpdate")]
+        public IActionResult RollTypeUpdate(Rolltypemasterparam Rolltypemasterparam)
+        {
+            var ItemID = _RollTypemaster.Update(Rolltypemasterparam);
+            return Ok(ItemID);
+        }
     }
     }

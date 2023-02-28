@@ -15,7 +15,7 @@ namespace HIMS.Model.Weaverparam
     {
 
       
-        public int BeamID { get; set; }
+        public int BeamId { get; set; }
         public int BeamNumber { get; set; }
 
        // public String TransportCode { get; set; }
@@ -33,7 +33,7 @@ namespace HIMS.Model.Weaverparam
 
         public String Operation { get; set; }
 
-        public int BeamID { get; set; }
+        public int BeamId { get; set; }
         public int BeamNumber { get; set; }
 
        // public String TransportCode { get; set; }

@@ -16,7 +16,7 @@ namespace HIMS.Model.Weaverparam
            
 
         public int LoomId { get; set; }
-        public String LoomCode { get; set; }
+       // public String LoomCode { get; set; }
         public String CompanyName { get; set; }
         public String LoomNo { get; set; }
 
