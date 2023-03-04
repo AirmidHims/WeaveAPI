@@ -28,10 +28,12 @@ namespace HIMS.API.Controllers.Transaction
         public readonly I_INVBeamMaster _INVBeamMaster;
         public readonly I_LoomTypemaster _LoomTypemaster;
         public readonly I_RollTypemaster _RollTypemaster;
+        public readonly I_PartyAccount _PartyAccount;
 
         public WeaverController(I_YarnMaster yarnMaster,I_Shademaster shademaster,I_MillMaster millMaster,I_WeaveItemmaster weaveItemmaster,
                I_INVAddlessmaster iNVAddlessmaster, I_INVLocationmaster iNVLocationmaster, I_INVLoommaster iNVLoommaster, I_INVQualitymaster iNVQualitymaster,
-               I_INVBeamMaster beamMaster, I_INVDefectMaster defectMaster, I_INVTransportMaster transportMaster,I_RollTypemaster rollTypemaster,I_LoomTypemaster loomTypemaster)
+               I_INVBeamMaster beamMaster, I_INVDefectMaster defectMaster, I_INVTransportMaster transportMaster,I_RollTypemaster rollTypemaster,I_LoomTypemaster loomTypemaster,
+               I_PartyAccount partyAccount)
             {
                 this._YarnMaster = yarnMaster;
                 this._Shademaster = shademaster;
@@ -45,7 +47,8 @@ namespace HIMS.API.Controllers.Transaction
                 this._INVTransportMaster = transportMaster;
                 this._INVBeamMaster = beamMaster;
                 this._RollTypemaster = rollTypemaster;
-            this._LoomTypemaster = loomTypemaster;
+                this._LoomTypemaster = loomTypemaster;
+            this._PartyAccount = partyAccount;
         }
 
         //New YarnInsert
@@ -276,12 +279,30 @@ namespace HIMS.API.Controllers.Transaction
             return Ok(ID);
         }
 
-        //Update Transport
+        //Update RollType
 
         [HttpPost("RollTypeUpdate")]
         public IActionResult RollTypeUpdate(Rolltypemasterparam Rolltypemasterparam)
         {
             var ItemID = _RollTypemaster.Update(Rolltypemasterparam);
+            return Ok(ItemID);
+        }
+
+        //New Account
+
+        [HttpPost("NewAccountInsert")]
+        public IActionResult NewAccountInsert(PartyAccountParam PartyAccountParam)
+        {
+            var ID = _PartyAccount.Insert(PartyAccountParam);
+            return Ok(ID);
+        }
+
+        //Update Account
+
+        [HttpPost("AccountUpdate")]
+        public IActionResult AccountUpdate(PartyAccountParam PartyAccountParam)
+        {
+            var ItemID = _PartyAccount.Update(PartyAccountParam);
             return Ok(ItemID);
         }
     }

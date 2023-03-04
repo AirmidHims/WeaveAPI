@@ -276,6 +276,7 @@ namespace HIMS.API.Extensions
             services.AddTransient<I_INVTransportMaster, R_INVTransportMaster>();
             services.AddTransient<I_RollTypemaster, R_RollTypemaster>();
             services.AddTransient<I_LoomTypemaster, R_LoomTypemaster>();
+            services.AddTransient<I_PartyAccount, R_PartyAccount>();
 
             /*   services.AddTransient<I_BookMasterHome, I_BookMasterHome>();
                services.AddTransient<I_BankMasterHome, I_BankMasterHome>();
