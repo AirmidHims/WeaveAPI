@@ -14,7 +14,7 @@ namespace HIMS.Model.Weaverparam
 
         public class InsertRollTypenmaster
     {
-        public int RollTypeId { get; set; }
+        public int RollTypeID { get; set; }
         public String RollType { get; set; }
         public String CreatedBy { get; set; }
         public String UpdatedBy { get; set; }
@@ -23,7 +23,7 @@ namespace HIMS.Model.Weaverparam
     public class UpdateRollTypemaster
     {
         public String Operation { get; set; }
-        public int RollTypeId { get; set; }
+        public int RollTypeID { get; set; }
         public String RollType { get; set; }
         public String UpdatedBy { get; set; }
     }

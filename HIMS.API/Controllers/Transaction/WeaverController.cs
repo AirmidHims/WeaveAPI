@@ -29,11 +29,12 @@ namespace HIMS.API.Controllers.Transaction
         public readonly I_LoomTypemaster _LoomTypemaster;
         public readonly I_RollTypemaster _RollTypemaster;
         public readonly I_PartyAccount _PartyAccount;
+        public readonly I_ContractBooking _ContractBooking;
 
         public WeaverController(I_YarnMaster yarnMaster,I_Shademaster shademaster,I_MillMaster millMaster,I_WeaveItemmaster weaveItemmaster,
                I_INVAddlessmaster iNVAddlessmaster, I_INVLocationmaster iNVLocationmaster, I_INVLoommaster iNVLoommaster, I_INVQualitymaster iNVQualitymaster,
                I_INVBeamMaster beamMaster, I_INVDefectMaster defectMaster, I_INVTransportMaster transportMaster,I_RollTypemaster rollTypemaster,I_LoomTypemaster loomTypemaster,
-               I_PartyAccount partyAccount)
+               I_PartyAccount partyAccount,I_ContractBooking contractBooking)
             {
                 this._YarnMaster = yarnMaster;
                 this._Shademaster = shademaster;
@@ -49,6 +50,7 @@ namespace HIMS.API.Controllers.Transaction
                 this._RollTypemaster = rollTypemaster;
                 this._LoomTypemaster = loomTypemaster;
             this._PartyAccount = partyAccount;
+            this._ContractBooking = contractBooking;
         }
 
         //New YarnInsert
@@ -303,6 +305,24 @@ namespace HIMS.API.Controllers.Transaction
         public IActionResult AccountUpdate(PartyAccountParam PartyAccountParam)
         {
             var ItemID = _PartyAccount.Update(PartyAccountParam);
+            return Ok(ItemID);
+        }
+
+        //New ContractBooking
+
+        [HttpPost("NewContractInsert")]
+        public IActionResult NewContractInsert(ContractBookingparam ContractBookingparam)
+        {
+            var ID = _ContractBooking.Insert(ContractBookingparam);
+            return Ok(ID);
+        }
+
+        //Update Account
+
+        [HttpPost("ContractInsertUpdate")]
+        public IActionResult ContractInsertUpdate(ContractBookingparam ContractBookingparam)
+        {
+            var ItemID = _ContractBooking.Update(ContractBookingparam);
             return Ok(ItemID);
         }
     }

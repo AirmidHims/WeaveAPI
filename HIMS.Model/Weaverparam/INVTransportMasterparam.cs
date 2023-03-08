@@ -18,7 +18,7 @@ namespace HIMS.Model.Weaverparam
         public int TransportID { get; set; }
         public String TransportName { get; set; }
 
-        public String TransportCode { get; set; }
+       // public String TransportCode { get; set; }
         public float TagaRate { get; set; }
 
         public float BagRate { get; set; }
@@ -41,7 +41,7 @@ namespace HIMS.Model.Weaverparam
         public int TransportID { get; set; }
         public String TransportName { get; set; }
 
-        public String TransportCode { get; set; }
+       // public String TransportCode { get; set; }
         public int TagaRate { get; set; }
 
         public int BagRate { get; set; }
