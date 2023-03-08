@@ -16,19 +16,19 @@ namespace HIMS.API.Controllers.Transaction
     [Route("api/[controller]")]
     public class RadiologyController : Controller
     {
-        public readonly I_RadiologyTemplateResult _RadiologyReportHeaderUpdate;
+        //public readonly I_RadiologyTemplateResult _RadiologyReportHeaderUpdate;
 
-        public RadiologyController(I_RadiologyTemplateResult i_Radiology)
-        {
-            this._RadiologyReportHeaderUpdate = i_Radiology;
-        }
+        //public RadiologyController(I_RadiologyTemplateResult i_Radiology)
+        //{
+        //    this._RadiologyReportHeaderUpdate = i_Radiology;
+        //}
 
-        [HttpPost("RadiologyTemplateResult")]
-        public IActionResult RadiologyTemplateResult(RadiologyTemplateResultParams RRHUP)
-        {
-            var RRHUPI = _RadiologyReportHeaderUpdate.Update(RRHUP);
-            return Ok(RRHUPI);
-        }
+        //[HttpPost("RadiologyTemplateResult")]
+        //public IActionResult RadiologyTemplateResult(RadiologyTemplateResultParams RRHUP)
+        //{
+        //    var RRHUPI = _RadiologyReportHeaderUpdate.Update(RRHUP);
+        //    return Ok(RRHUPI);
+        //}
 
 
     }
