@@ -30,11 +30,11 @@ namespace HIMS.API.Controllers.Transaction
         public readonly I_RollTypemaster _RollTypemaster;
         public readonly I_PartyAccount _PartyAccount;
         public readonly I_ContractBooking _ContractBooking;
-
+        public readonly I_DdesignMaster _DdesignMaster;
         public WeaverController(I_YarnMaster yarnMaster,I_Shademaster shademaster,I_MillMaster millMaster,I_WeaveItemmaster weaveItemmaster,
                I_INVAddlessmaster iNVAddlessmaster, I_INVLocationmaster iNVLocationmaster, I_INVLoommaster iNVLoommaster, I_INVQualitymaster iNVQualitymaster,
                I_INVBeamMaster beamMaster, I_INVDefectMaster defectMaster, I_INVTransportMaster transportMaster,I_RollTypemaster rollTypemaster,I_LoomTypemaster loomTypemaster,
-               I_PartyAccount partyAccount,I_ContractBooking contractBooking)
+               I_PartyAccount partyAccount,I_ContractBooking contractBooking, I_DdesignMaster ddesignMaster)
             {
                 this._YarnMaster = yarnMaster;
                 this._Shademaster = shademaster;
@@ -51,6 +51,7 @@ namespace HIMS.API.Controllers.Transaction
                 this._LoomTypemaster = loomTypemaster;
             this._PartyAccount = partyAccount;
             this._ContractBooking = contractBooking;
+            this._DdesignMaster = ddesignMaster;
         }
 
         //New YarnInsert
@@ -323,6 +324,24 @@ namespace HIMS.API.Controllers.Transaction
         public IActionResult ContractInsertUpdate(ContractBookingparam ContractBookingparam)
         {
             var ItemID = _ContractBooking.Update(ContractBookingparam);
+            return Ok(ItemID);
+        }
+
+        //New Design
+
+        [HttpPost("NewDesignInsert")]
+        public IActionResult NewDesignInsert(DesignMasterParam DesignMasterParam)
+        {
+            var ID = _DdesignMaster.Insert(DesignMasterParam);
+            return Ok(ID);
+        }
+
+        //Update Account
+
+        [HttpPost("DesignUpdate")]
+        public IActionResult DesignUpdate(DesignMasterParam DesignMasterParam)
+        {
+            var ItemID = _DdesignMaster.Update(DesignMasterParam);
             return Ok(ItemID);
         }
     }
