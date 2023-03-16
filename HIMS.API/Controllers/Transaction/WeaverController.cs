@@ -32,10 +32,11 @@ namespace HIMS.API.Controllers.Transaction
         public readonly I_ContractBooking _ContractBooking;
         public readonly I_DdesignMaster _DdesignMaster;
         public readonly I_YarnInward _YarnInward;
+        public readonly I_BeamInward _BeamInward;
         public WeaverController(I_YarnMaster yarnMaster,I_Shademaster shademaster,I_MillMaster millMaster,I_WeaveItemmaster weaveItemmaster,
                I_INVAddlessmaster iNVAddlessmaster, I_INVLocationmaster iNVLocationmaster, I_INVLoommaster iNVLoommaster, I_INVQualitymaster iNVQualitymaster,
                I_INVBeamMaster beamMaster, I_INVDefectMaster defectMaster, I_INVTransportMaster transportMaster,I_RollTypemaster rollTypemaster,I_LoomTypemaster loomTypemaster,
-               I_PartyAccount partyAccount,I_ContractBooking contractBooking, I_DdesignMaster ddesignMaster,I_YarnInward yarnInward)
+               I_PartyAccount partyAccount,I_ContractBooking contractBooking, I_DdesignMaster ddesignMaster,I_YarnInward yarnInward,I_BeamInward beamInward)
             {
                 this._YarnMaster = yarnMaster;
                 this._Shademaster = shademaster;
@@ -54,6 +55,7 @@ namespace HIMS.API.Controllers.Transaction
             this._ContractBooking = contractBooking;
             this._DdesignMaster = ddesignMaster;
             this._YarnInward = yarnInward;
+            this._BeamInward = beamInward;
         }
 
         //New YarnInsert
@@ -362,6 +364,25 @@ namespace HIMS.API.Controllers.Transaction
         public IActionResult YarnInwardUpdate(YarnInwardparam YarnInwardparam)
         {
             var ItemID = _YarnInward.Update(YarnInwardparam);
+            return Ok(ItemID);
+        }
+
+
+        //New BeamInward
+
+        [HttpPost("NewBeamInwardInsert")]
+        public IActionResult NewBeamInwardInsert(BeamInwardparam BeamInwardparam)
+        {
+            var ID = _BeamInward.Insert(BeamInwardparam);
+            return Ok(ID);
+        }
+
+        //Update BeamInward
+
+        [HttpPost("BeamInwardUpdate")]
+        public IActionResult BeamInwardUpdate(BeamInwardparam BeamInwardparam)
+        {
+            var ItemID = _BeamInward.Update(BeamInwardparam);
             return Ok(ItemID);
         }
     }
