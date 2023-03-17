@@ -16,7 +16,7 @@ namespace HIMS.Model.Weaverparam
        
 
         public int YarnInwardID { get; set; }
-        public String YarnInwardCode { get; set; }
+        //public String YarnInwardCode { get; set; }
 
         public DateTime EntryDate { get; set; }
         public String ChallanNo { get; set; }
@@ -43,7 +43,7 @@ namespace HIMS.Model.Weaverparam
 
         public String Operation { get; set; }
         public int YarnInwardID { get; set; }
-        public String YarnInwardCode { get; set; }
+       // public String YarnInwardCode { get; set; }
 
         public DateTime EntryDate { get; set; }
         public String ChallanNo { get; set; }
