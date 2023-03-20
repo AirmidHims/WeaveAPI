@@ -30,6 +30,15 @@ namespace HIMS.Data.Weaver
             disc.Remove("BeamInwardID");
             var id = ExecNonQueryProcWithOutSaveChanges("Insert_BeamInwardDetails", disc, outputId1);
 
+            foreach (var a in BeamInwardparam.InsertBeamInwardItemList)
+            {
+                var disc1 = a.ToDictionary();
+                disc1["BeamInwardId"] = id;
+                a.BeamInwardId = BeamInwardparam.InsertBeamInward.BeamInwardID;
+                ExecNonQueryProcWithOutSaveChanges("Insert_BeamInwardList", disc1);
+            }
+
+
             _unitofWork.SaveChanges();
             return (id);
         }
@@ -40,6 +49,14 @@ namespace HIMS.Data.Weaver
             var disc = BeamInwardparam.UpdateBeamInward.ToDictionary();
             ExecNonQueryProcWithOutSaveChanges("Upd_Del_BeamInwardDetails", disc);
 
+
+            foreach (var a in BeamInwardparam.UpdateBeamInwardItemList)
+            {
+
+                var disc1 = a.ToDictionary();
+                disc1["BeamInwardID"] = BeamInwardparam.UpdateBeamInward.BeamInwardID;
+                ExecNonQueryProcWithOutSaveChanges("Upd_Del_BeamInwardList", disc1);
+            }
             _unitofWork.SaveChanges();
             return true;
         }

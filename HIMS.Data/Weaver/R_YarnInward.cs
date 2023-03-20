@@ -31,6 +31,13 @@ namespace HIMS.Data.Weaver
             disc.Remove("YarnInwardID");
             var id = ExecNonQueryProcWithOutSaveChanges("Insert_YarnInwardMaster", disc, outputId1);
 
+            foreach (var a in YarnInwardparam.InsertYarnInwardItemList)
+            {
+                var disc1 = a.ToDictionary();
+                disc1["YarnInwardID"] = id;
+                 ExecNonQueryProcWithOutSaveChanges("Insert_YarnInwardList", disc1);
+            }
+
             _unitofWork.SaveChanges();
             return (id);
         }
@@ -40,6 +47,16 @@ namespace HIMS.Data.Weaver
             // throw new NotImplementedException();
             var disc = YarnInwardparam.UpdateYarnInward.ToDictionary();
             ExecNonQueryProcWithOutSaveChanges("Upd_Del_YarnInwardMaster", disc);
+
+
+            foreach (var a in YarnInwardparam.UpdateYarnInwardItemList)
+            {
+               
+                var disc1 = a.ToDictionary();
+                disc1["YarnInwardID"] = YarnInwardparam.UpdateYarnInward.YarnInwardID;
+                ExecNonQueryProcWithOutSaveChanges("Upd_Del_YarnInwardList", disc1);
+            }
+
 
             _unitofWork.SaveChanges();
             return true;
