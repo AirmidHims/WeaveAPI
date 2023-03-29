@@ -167,13 +167,13 @@ namespace HIMS.Model.Weaverparam
         public String Ends { get; set; }
 
         public String RSpace { get; set; }
-        public float Reed { get; set; }
+        public String Reed { get; set; }
         public float DesignPick { get; set; }
         public float LoomPick { get; set; }
 
 
         public float Lasa { get; set; }
-        public float YardMeter { get; set; }
+        public String YardMeter { get; set; }
         public float Cuts { get; set; }
         public float BeamWt { get; set; }
         public float BeamMeter { get; set; }

@@ -54,7 +54,7 @@ namespace HIMS.Data.Weaver
             {
 
                 var disc1 = a.ToDictionary();
-                disc1["BeamInwardID"] = BeamInwardparam.UpdateBeamInward.BeamInwardID;
+                disc1["BeamInwardId"] = BeamInwardparam.UpdateBeamInward.BeamInwardID;
                 ExecNonQueryProcWithOutSaveChanges("Upd_Del_BeamInwardList", disc1);
             }
             _unitofWork.SaveChanges();
