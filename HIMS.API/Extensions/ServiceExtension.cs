@@ -281,6 +281,7 @@ namespace HIMS.API.Extensions
             services.AddTransient<I_DdesignMaster, R_DesignMaster>();
 
             services.AddTransient<I_YarnInward, R_YarnInward>();
+            services.AddTransient<I_Yarnoutwards, R_Yarnoutwards>();
             services.AddTransient<I_BeamInward, R_BeamInward>();
             /*   services.AddTransient<I_BookMasterHome, I_BookMasterHome>();
                services.AddTransient<I_BankMasterHome, I_BankMasterHome>();

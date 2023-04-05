@@ -32,11 +32,13 @@ namespace HIMS.API.Controllers.Transaction
         public readonly I_ContractBooking _ContractBooking;
         public readonly I_DdesignMaster _DdesignMaster;
         public readonly I_YarnInward _YarnInward;
+        public readonly I_Yarnoutwards _Yarnoutwards;
         public readonly I_BeamInward _BeamInward;
         public WeaverController(I_YarnMaster yarnMaster,I_Shademaster shademaster,I_MillMaster millMaster,I_WeaveItemmaster weaveItemmaster,
                I_INVAddlessmaster iNVAddlessmaster, I_INVLocationmaster iNVLocationmaster, I_INVLoommaster iNVLoommaster, I_INVQualitymaster iNVQualitymaster,
                I_INVBeamMaster beamMaster, I_INVDefectMaster defectMaster, I_INVTransportMaster transportMaster,I_RollTypemaster rollTypemaster,I_LoomTypemaster loomTypemaster,
-               I_PartyAccount partyAccount,I_ContractBooking contractBooking, I_DdesignMaster ddesignMaster,I_YarnInward yarnInward,I_BeamInward beamInward)
+               I_PartyAccount partyAccount,I_ContractBooking contractBooking, I_DdesignMaster ddesignMaster,I_YarnInward yarnInward,I_BeamInward beamInward
+            ,I_Yarnoutwards  yarnoutwards)
             {
                 this._YarnMaster = yarnMaster;
                 this._Shademaster = shademaster;
@@ -55,6 +57,7 @@ namespace HIMS.API.Controllers.Transaction
             this._ContractBooking = contractBooking;
             this._DdesignMaster = ddesignMaster;
             this._YarnInward = yarnInward;
+            this._Yarnoutwards = yarnoutwards;
             this._BeamInward = beamInward;
         }
 
@@ -364,6 +367,24 @@ namespace HIMS.API.Controllers.Transaction
         public IActionResult YarnInwardUpdate(YarnInwardparam YarnInwardparam)
         {
             var ItemID = _YarnInward.Update(YarnInwardparam);
+            return Ok(ItemID);
+        }
+
+        //New YarnOutward
+
+        [HttpPost("NewYarnOutwardInsert")]
+        public IActionResult NewYarnOutwardInsert(YarnOutwardparam YarnOutwardparam)
+        {
+            var ID = _Yarnoutwards.Insert(YarnOutwardparam);
+            return Ok(ID);
+        }
+
+        //Update YarnOutward
+
+        [HttpPost("YarnOutwardUpdate")]
+        public IActionResult YarnOutwardUpdate(YarnOutwardparam YarnOutwardparam)
+        {
+            var ItemID = _Yarnoutwards.Update(YarnOutwardparam);
             return Ok(ItemID);
         }
 
